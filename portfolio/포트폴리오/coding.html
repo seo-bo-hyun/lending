@@ -1,0 +1,5023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "top">
+        <p><b>Coding</b></p>
+    </div>
+
+    <div class="menuline">
+        <b>지금까지 했던 코딩 중 일부 입니다</b>
+    </div>
+
+    <div class="menuline">
+        <b>1</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*for문과 if문을 활용하여 구구단 2단부터 40단까지 나타내고, 각 홀수의 단수는 출력되지 않게 하라.
+
+  [문제출제 1 : 구구단이 다음 구구단으로 넘어갈 때마다 구분선을 지어주시오.]
+
+  문제출제1 예시)
+
+  ==========구구단 2단======
+
+  2 x 1 = 2;
+
+   .
+
+  .
+
+  .
+
+  2 x 9 = 18;
+
+  =========구구단 4단=========
+
+  .
+
+  .
+
+  .
+
+  [문제출제 2 : 구구단 4, 8, 14단은 출력되지 않게 하시오.]
+
+  [문제출제 3 : 구구단 18, 20단은 각각 118단, 220단으로 출력될 수 있게 만드시오.]
+
+  [문제출제 4 :구구단이 10단위 위주로 단수가 올라갈 때마다 그 다음 단수가 나올 수 있게 만드시오.[짝수의]]
+
+  문제출제 4번 예시)
+
+  =====구구단8단=======
+
+  .
+
+  .
+
+  .
+
+
+
+  =====구구단11단======*/
+  
+  for (int a = 2; a <= 40; a = a + 2)
+{
+
+	if (a != 4 && a != 8 && a != 14)
+	{
+		if (a == 18)
+		{
+			a = 118;
+		}
+
+		if (a == 20)
+		{
+			a = 220;
+		}
+
+		if (a % 10 == 0)
+		{
+			a = a + 1;
+		}
+
+
+		printf("======= 구구단 %d단 =======\n", a);
+
+
+		for (int b = 1; b <= 9; b++)
+		{
+			printf("%d x %d = %d\n", a, b, a * b);
+		}
+
+		if (a % 2 != 0)
+		{
+			a = a - 1;
+		}
+
+		if (a == 118)
+		{
+			a = 18;
+		}
+
+		if (a == 220)
+		{
+			a = 20;
+		}
+	}
+}
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>2</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*
+[문제 출제 - 당신은 프로그래머입니다. 지금부터 손님이 원하는 코딩을 설정해주세요. if, else, else if, scanf 필수로 사용][문제출제1: 구구단 2단 이상 나오는 것은 모두 변환문자로 표기하시오.]
+[문제출제2: 볶음밥, 자장면, 탕수육에 각각 가격을 제시하고 끝까지 금액이 +되는 상황을 재현하시오.][문제출제3: 단, 4번에는 종료버튼을 넣어, 4번을 누를 시 코딩이 종료되며 합산된 금액이 산출되도록 하시오.]
+[문제출제4: 모든 선택형에는 없는 번호를 누를 시 다시 되돌아가는 코딩을 설정하시오.][문제출제5: 음식점에서 탕수육 소,중,대를 각기 다른 금액으로 표현하시오.]
+[문제출제6: 이 역시 위와같이 잘못 누를 시 다시 되돌아가 금액이 초기화되지 않은 상태로 지속적으로 번호를 선택할 수 있도록 하시오.]
+
+    [1.구구단 2.음식점 3.계산기 4.종료]
+    1. 2단만 나오는 구구단을 설정해주세요.
+    1-1 : 2단이 지속적으로 출력된다. 2x1 ~ 2x9
+    1-2 : 구구단 2단이 끝나면 다시 처음 메뉴[1.구구단 2.음식점 3.계산기 4.종료]로 다시 빠져나간다.
+    1-3 : 거기서 다시 1번을 누르면 또다시 구구단 2단이 나타난다.
+
+    2. 음식점을 차릴 건데, 포스기에서 사용하는 코딩을 설정해주세요. [1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료] 금액 본인이 설정.
+    2-1 : 2번을 누르면 볶음밥, 자장면, 탕수육을 선택할 수 있게 만든다.
+    2-2 : 그곳에서 탕수육을 누를 시.1.대[?원] 2.중[?원] 3.소[?원] 4.이전 메뉴로가 출력된다. 그리고 그곳에서 4번 이전메뉴를 선택할 시 다시 볶음밥 등을 선택할 수 있는 메뉴판이 나타난다.
+    2-3 : 마찬가지로 종료버튼을 누르면 이전 메뉴로 빠져나가서 1.구구단 2.중국집 3.계산기 4.종료버튼이 뜨게 한다.
+    2-4 : 단, 메인메뉴로 빠져나가고, 다시 중국집으로 들어가게 됐을 때 이전에 중국집에서 산 금액이 +되어서 합산되게 하시오.
+    2-5 : 각 금액은 알아서 추가하시고, 각 메뉴마다 금액을 나타내시오.
+    [2번 예시 : 볶음밥이 1천원짜리가 있다면 1천원이 추가되어, 종료버튼을 누르면 알아서 추가된 금액이 나오도록.]
+    메뉴 금액은 최초 1회 입력받게 만들어주세요 >> 중국집 들어가는 순간 >> 다시 들어갈 땐 받지 않음.
+    1.볶음밥.
+    볶음밥 5000원이 추가되어 현재 12000[누적금액]원입니다.
+
+    3. 계산기가 필요해요. 더하기와 빼기만 있으면 되는데 가능할까요?
+    3-1 : 1.더하기 2. 빼기를 만든다. 빼기의 경우.
+    1. 더하기 2.빼기
+    선택 : 1
+    첫 번째 숫자 : 10scanf
+    두 번째 숫자 : 10scanf
+    10+10=20
+
+    선택 : 2
+    첫 번째 숫자 : 30scanf
+    두 번째 숫자 : 100scanf
+    이런 경우
+    "두 번재 숫자가 더 클 수 없습니다!!"
+    두 번째 숫자만 다시 입력받는다. 첫 번째 숫자보다 클 때까지.
+    만약 이미 계산을 한 상태일 경우,
+    그 전에 계산된 금액이 나타나면서 더하거나 뺄 숫자를 입력할 수 있게 하시오.
+    예시 = 입력 : 3
+    계산기입니다.
+
+    1번 더하기 2번 빼기
+    선택 : 1
+    첫 번째 : 10
+    두 번째 : 20
+    10 + 20 = 30
+
+    [1.구구단 2.음식점 3.계산기 4.종료]
+    선택 : 3
+    1번 더하기, 2번 빼기
+    선택 : 1
+    두 번째 숫자 입력 : 50
+    30 + 50 = 80
+
+    4. 종료
+    4-1:종료버튼울 누를 시, 여태까지 합산된 금액이 얼마인지 알 수 있도록 나타내시오.
+*/
+
+    int count = 0;
+    int count1 = 0;
+    int count2 = 0;
+    int gugu = 2;
+
+    int select;
+    int choice;
+    int tangsize;
+    int select1;
+
+    int a = 0, b = 0, c = 0;
+    int aa = 0, bb = 0, cc = 0;
+    int d = 0, dd = 0, e = 0, ee = 0;
+
+    Scanner input = new Scanner(System.in);
+
+    while (true)
+    {
+        System.out.println();
+        System.out.println("1. 구구단, 2. 음식점, 3. 계산기, 4. 종료");
+        select = input.nextInt();
+
+        if (select == 1)
+        {
+            Gugudan two = new Gugudan(gugu);
+
+            two.gugudan();
+        }
+
+        if (select == 2)
+        {
+            while (true)
+            {
+                System.out.println("[ 1. 볶음밥, 2. 짜장면, 3. 탕수육[소,중,대], 4. 종료");
+                choice = input.nextInt();
+
+                if (choice == 1)
+                {
+                    count = count + 6000;
+                    Gugudan Bok = new Gugudan(count);
+
+                    Bok.Bok_result(count);
+                }
+
+                if (choice == 2)
+                {
+                    count = count + 5000;
+                    Gugudan Jajang = new Gugudan(count);
+
+                    Jajang.Jajang_result(count);
+                }
+
+                if (choice == 3)
+                {
+                    System.out.println("탕수육 사이즈를 선택하세요");
+                    System.out.println("1. 소, 2. 중, 3. 대");
+                    tangsize = input.nextInt();
+
+                    if (tangsize == 1)
+                    {
+
+                        count = count + 10000;
+                        Gugudan tangs = new Gugudan(count);
+
+                        tangs.TangS_result(count);
+                    }
+
+                    if (tangsize == 2)
+                    {
+
+                        count = count + 12000;
+                        Gugudan tangm = new Gugudan(count);
+
+                        tangm.TangM_result(count);
+                    }
+
+                    if (tangsize == 3)
+                    {
+
+                        count = count + 14000;
+                        Gugudan tangb = new Gugudan(count);
+
+                        tangb.TangB_result(count);
+                    }
+                }
+
+                if (choice == 4)
+                {
+                    System.out.println("메인 메뉴로 돌아갑니다");
+                    break;
+                }
+            }
+        }
+
+        if (select == 3)
+        {
+            System.out.println("1. 더하기, 2. 빼기");
+            select1 = input.nextInt();
+
+            if (select1 == 1 && count1 > 0)
+            {
+                System.out.println("두번째 숫자");
+                d = input.nextInt();
+
+                e = c + d;
+
+                Gugudan plus = new Gugudan(c, d, e);
+                plus.Plus(c, d, e);
+                //System.out.println(c + " + " + d + " = " + e);
+                c = e;
+
+            }
+
+            if (select1 == 2 && count2 > 0)
+            {
+                System.out.println("두번째 숫자");
+                dd = input.nextInt();
+
+                if (cc < dd)
+                {
+                    while (true)
+                    {
+                        System.out.println("두번째 숫자가 첫번째 숫자보다 더 클 수 없습니다 다시 입력하세요");
+                        dd = input.nextInt();
+
+                        if (cc > dd)
+                        {
+                            ee = cc - dd;
+                            break;
+                        }
+                    }
+
+                }
+
+                ee = cc - dd;
+
+                Gugudan minus = new Gugudan(cc, dd, ee);
+                minus.Minus(cc, dd, ee);
+                //System.out.println(cc + " - " + dd + " = " + ee);
+                cc = ee;
+            }
+
+            if (select1 == 1 && count1 <= 0)
+            {
+                System.out.println("첫번째 숫자");
+                a = input.nextInt();
+                System.out.println("두번째 숫자");
+                b = input.nextInt();
+
+                c = a + b;
+
+                Gugudan plus = new Gugudan(a, b, c);
+                plus.Plus(a, b, c);
+                //System.out.println(a + " + " + b + " = " + c);
+                count1++;
+            }
+
+            if (select1 == 2 && count2 <= 0)
+            {
+                System.out.println("첫번째 숫자");
+                aa = input.nextInt();
+                System.out.println("두번째 숫자");
+                bb = input.nextInt();
+
+                if (aa < bb)
+                {
+                    while (true)
+                    {
+                        System.out.println("두번째 숫자가 첫번째 숫자보다 클 수 없습니다 다시 입력하세요");
+                        b = input.nextInt();
+
+                        if (aa > bb)
+                        {
+                            cc = aa - bb;
+                            //System.out.println(a + " - " + b + " = " + c);
+                            break;
+                        }
+                    }
+                }
+
+                cc = aa - bb;
+                Gugudan minus = new Gugudan(aa, bb, cc);
+                minus.Minus(aa, bb, cc);
+                //System.out.println(aa + " - " + bb + " = " + cc);
+                count2++;
+            }
+        }
+
+        if (select == 4)
+        {
+            Gugudan exit = new Gugudan(count);
+
+            exit.Exit(count);
+            break;
+        }
+    }
+    
+======================== 객체와 클래스 =======================
+    
+int count = 0;
+int a = 0;
+int b = 0;
+int c = 0;
+
+Gugudan(int count)
+{
+    this.count = count;
+}
+
+Gugudan(int a, int b, int c)
+{
+    this.a = a;
+    this.b = b;
+    this.c = c;
+}
+
+
+public void gugudan()
+{
+    System.out.println("구구단 2단만 출력합니다");
+    System.out.println();
+    for (int i = 2; i <= 2; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+            System.out.println(i + " X " + j + " = " + i * j);
+        }
+    }
+}
+
+public void Bok_result(int count)
+{
+    System.out.println("볶음밥을 구매 해서 현재 누적금액 " + count + " 원 입니다");
+}
+
+public void Jajang_result(int count)
+{
+    System.out.println("짜장면을 구매 해서 현재 누적금액 " + count + " 원 입니다");
+}
+
+
+public void TangS_result(int count)
+{
+    System.out.println("탕수육 소를 구매 해서 현재 누적금액 " + count + " 원 입니다");
+}
+
+public void TangM_result(int count)
+{
+    System.out.println("탕수육 중을 구매 해서 현재 누적금액 " + count + " 원 입니다");
+}
+
+public void TangB_result(int count)
+{
+    System.out.println("탕수육 대를 구매 해서 현재 누적금액 " + count + " 원 입니다");
+}
+
+public void Plus(int a, int b, int c)
+{
+    c = a + b;
+    System.out.println(a + " + " + b + " = " + c);
+
+}
+
+public void Minus(int a, int b, int c)
+{
+    c = a - b;
+    System.out.println(a + " - " + b + " = " + c);
+}
+
+public void Exit(int count)
+{
+    System.out.println("총 매출 금액 = " + count);
+}
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>3</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*총 10개의 값을 받게 된다.
+그리고 출력은 거꾸로 출력되게 만들어주세요.
+거꾸로 출력이 완료되었다면, [그 후]
+이번에는 입력 받은 값의 합을 나타내시고,
+혹시라도 7이라는 숫자를 입력한 적이 있다면, 해당 7이라는 숫자가 몇 번이나 나왔는지,
+해당 7이라는 숫자가 들어있는 배열[거꾸로 배열 기준]의 인덱스 중 가장 마지막은 몇 번인지를 나타내시고,
+7이 나온 수만큼 더해진 값이 얼마인지 나타내보세요.
+
+  예시)
+
+  입력 1 2 3 4 5 6 7 7 8 9 10
+
+  [거꾸로]10 9 8 7 7 6 5 4 3 2 1
+
+  총 합은 62입니다.
+
+  7은 총 2번 나왔습니다.
+
+  7이 들어있는 index 중에서 가장 마지막은 7번 입니다.
+
+  7이 나온 값만큼 더한 숫자는 14입니다.*/
+
+int total[100] = { 0, };
+int number;
+int sum = 0;
+int num = 0;
+int a, b, c;
+int count = 0, count1 = 0;
+int index = 0;
+
+printf("몇 개의 값을 입력 할까요?\n");
+scanf("%d", &number);
+
+
+for (int i = 0; i <= number - 1; i++)
+{
+	printf("%d번째 값을 입력하세요 : \n", i + 1);
+	scanf("%d", &total[i]);
+}
+
+// 거꾸로
+printf("\n");
+
+for (int i = number - 1; i >= 0; i--)
+{
+	printf("%d\n", total[i]);
+}
+
+for (int i = 0; i <= number - 1; i++)
+{
+	sum = sum + total[i];
+}
+
+printf("총 합은 %d입니다\n", sum);
+
+printf("\n");
+
+// 7만 골라내서 7의 합구하기 
+// 배열을 검사해서 7이 있는지 확인하고 출력
+
+
+
+
+for (int i = 0; i <= number - 1; i++)
+{
+	if (total[i] == 7)
+	{
+		count = count + 1;
+	}
+	num = count * 7;
+
+}
+
+printf("7은 %d개가 들어있습니다 \n", count);
+printf("7이 나온 값 만큼 더한 값은 %d입니다\n", num);
+
+printf("\n");
+
+// 예 ) index[1] = 7 , index[2] = 7 이면 같은 숫자 마지막 번째 인덱스값 구하기 
+
+for (int i = number - 1; i >= 0; i--)
+{
+	if (total[i] == 7)
+	{
+		index = i;
+		printf("7이 저장되어 있는 배열은 %d번째 입니다\n", index);
+	}
+}
+
+printf("\n");
+
+for (int i = number - 1; i >= 0; i--)
+{
+	if (total[i] == 7)
+	{
+		index = i;
+	}
+
+	if (index < i)
+	{
+		printf("7이 저장되어 있는 배열 중 가장 마지막 배열은 %d번째 입니다\n", index);
+		break;
+	}
+}
+
+printf("모든 배열 값을 하나씩 삭제 하면서 7만 남았을때 종료하는 코드를 작성하세요\n");
+
+for (int i = 0; i <= number - 1; i++)
+{
+	printf("%d번째 배열에 저장되어 있는 숫자들 : %d\n", i + 1, total[i]);
+}
+
+while (1)
+{
+	printf("몇 번째 배열 값을 삭제 하겠습니끼?\n");
+	scanf("%d", &a);
+
+	printf("삭제 할 값을 입력하세요\n");
+	scanf("%d", &b);
+	while (b == 7)
+	{
+		printf("\n\n7의 값은 뺄 수 없습니다.\n\n");
+		printf("삭제 할 값을 입력하세요\n");
+		scanf("%d", &b);
+		break;
+	}
+	total[a - 1] = total[a - 1] - b;
+
+	if (total[a - 1] == 0)
+	{
+		for (int k = a - 1; k <= number - 1; k++)
+		{
+			total[k] = total[k + 1];
+		}
+		number = number - 1;
+	}
+
+	for (int i = 0; i <= number - 1; i++)
+	{
+		printf("삭제 되고 난 %d번째 배열 값 : %d\n", i + 1, total[i]);
+
+	}
+
+	if (a == 0)
+	{
+		break;
+	}
+}
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>4</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*몇개까지 있다고 할까요 : 20
+
+    1번째 값 : 0
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 1
+
+
+    숫자 입력 : 1
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 1
+
+
+    숫자 입력 : 1
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+
+    3번째 값 : 2
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 2
+
+
+    숫자 입력 : 2
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+
+    3번째 값 : 2
+
+    4번째 값 : 0
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 1
+
+
+    숫자 입력 : 5
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+
+    3번째 값 : 2
+
+    4번째 값 : 0
+
+    5번째 값 : 5
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 2
+
+
+    숫자 입력 : 2
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+
+    3번째 값 : 2
+
+    4번째 값 : 0
+
+    5번째 값 : 5
+
+    6번째 값 : 3
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 : 3
+
+
+    번호 선택 : 3
+
+
+    1번째 값 : 0
+
+    2번째 값 : 1
+
+    3번째 값 : 2
+
+    4번째 값 : 0
+
+    5번째 값 : 5
+
+    6번째 값 : 3
+
+    7번째 값 : 2
+        [다음 값 기준]
+    1.더하기
+    2.빼기
+    3.특정 값 불러오기
+
+    선택 :*/
+
+    Scanner input = new Scanner(System.in);
+
+    int number[] = new int[100];
+    int plus;
+    int minus;
+    int choice;
+    int count;
+    int count1[] = new int[100];
+    int score[] = new int[100];
+    int choice2;
+
+
+
+
+
+    System.out.println("몇 개 까지 있다고 할까요?");
+    count = input.nextInt();
+
+    for (int i = 0; i <= count - 1; i++)
+    {
+        score[i] = 0;
+    }
+
+    for (int i = 0; i <= count - 1; i++)
+    {
+        System.out.println(score[i]);
+    }
+
+    
+
+    for (int i = 0; i <= count - 1; i++)
+    {
+
+        System.out.println("[다음 값 기준]");
+        System.out.println("1. 더하기");
+        System.out.println("2. 빼기");
+        System.out.println("3. 특정 값 불러오기");
+
+        choice2 = input.nextInt();
+
+        if (choice2 == 1)
+        {
+            System.out.println("숫자 입력 : ");
+            plus = input.nextInt();
+
+            number[i + 1] = number[i] + plus;
+        }
+
+        if (choice2 == 2)
+        {
+            System.out.println("숫자 입력 : ");
+            minus = input.nextInt();
+            number[i + 1] = number[i] - minus;
+        }
+
+        if (choice2 == 3)
+        {
+            System.out.println("숫자 입력 : ");
+            choice = input.nextInt();
+            number[i + 1] = number[choice];
+        }
+
+        for (int q = 0; q <= count - 1; q++)
+        {
+            if (number[q] > 0)
+            {
+                System.out.println(q + "번째 값 = " + number[q]);
+            }
+        }
+    }
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>5</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+    /*돈 빼기 프로그램을 개발해보자.
+
+    처음에 몇 명의 돈을 추가할 지 입력받는다.
+            강사는 일일이 써야 하기 때문에, 손가락이 아플 테니 3명으로 하겠다.
+    3을 입력받았으면 아래처럼 나타난다.
+
+    1번째 손님 추가할 금액 : 10000
+    2번째 손님 추가할 금액 : 10000
+    3번째 손님 추가할 금액 : 10000
+    이렇게 쓰면, 바로 아래처럼 나타난다.
+    1번째 손님이 가진 금액 : 10000
+    2번째 손님이 가진 금액 : 10000
+    3번째 손님이 가진 금액 : 10000
+    그리고, 바로 몇 번째 손님의 돈을 뺄 지 질문한다.
+            강사는 2번째라고 하겠다.
+    그렇게 하면, 얼마를 빼겠냐고 질문한다.
+    이 때에, 돈을 뺐을 당시 돈이 0원이 된다면 해당 손님의 번호는 사라진다.
+    예시를 들겠다.
+
+    몇 번째 손님을 선택하겠습니까 : 2
+    얼마를 빼시겠습니까 : 10000
+
+    1번째 손님이 가진 금액 : 10000
+    2번째 손님이 가진 금액 : 10000
+
+    손님의 돈을 얼마를 빼든, 빼면 바로 위처럼 몇 번까지 존재하고, 얼마를 가지고 있는지를 나타낸다.
+            따라서, 현재 위 같은 경우, 2번 손님의 돈이 0원이 되어 삭제되고, 3번의 손님이 2번으로 바뀐 걸 확인할 수 있다.
+    위 같은 문제를 만들어보고,
+
+    마지막에는 현재 남은 손님들의 돈이 합쳐서 얼마나 존재하는지를 나타내고, 현재 몇 번까지 존재하는질 나타내보자.
+    또한, 처음에 있었던 3명은 얼마를 가지고 있었고, 현재는 얼마가 남았는지, 총액을 알아내고,
+            둘이 얼마나 차액이 벌어졌는지를 나타내자.
+
+    손님 선택과 뺄 금액에서 둘 다 9을 입력하면 종료된다.*/
+
+    Scanner input = new Scanner(System.in);
+
+    int money[] = new int[100];
+    int plus;
+    int human;
+    int choice;
+    int minus;
+    int lastmoney = 0;
+    int people = 0;
+    int firstmoney[] = new int[100];
+    int firstmoney1 = 0;
+    int money2 = 0;
+    int money3 = 0;
+
+
+    System.out.println("몇 명의 돈을 추가 할까요?");
+    human = input.nextInt();
+
+    for (int i = 0; i <= human - 1; i++)
+    {
+        System.out.println(i + 1 + "번째 손님 추가 할 금액 : ");
+        plus = input.nextInt();
+        money[i] = plus;
+        firstmoney1 = firstmoney1 + money[i];
+    }
+
+    for (int i = 0; i <= human - 1; i++)
+    {
+        System.out.println((i + 1) + "번째 손님이 가진 금액 = " + money[i]);
+    }
+
+    while (true)
+    {
+        System.out.println();
+        System.out.println("몇 번째 손님을 선택 하시겠습니까 ? (종료 방법은 둘다 9를 입력해주세요)");
+        choice = input.nextInt();
+        System.out.println("얼마를 빼시겠습니까?");
+        minus = input.nextInt();
+
+        money[choice - 1] = money[choice - 1] - minus;
+
+
+        int a;
+
+        if (money[choice - 1] == 0)
+        {
+            for (a = choice - 1; a <= human - 1; a++)
+            {
+                money[a] = money[a + 1];
+            }
+
+            if (money[a] == 0)
+            {
+                human--;
+            }
+        }
+
+
+        for (int i = 0; i <= human - 1; i++)
+        {
+            if (money[i] == 0)
+            {
+                money[i] = money[i + 1];
+                System.out.println("i = " + i);
+            }
+        }
+
+        for (int q = 0; q <= human - 1; q++)
+        {
+            System.out.println((q + 1) + "번째 손님이 가진 금액 = " + money[q]);
+        }
+
+
+
+        if (choice == 9 && minus == 9)
+        {
+
+            System.out.println("현재 남은 손님들의 총 금액");
+            for (int i = 0; i <= human - 1; i++)
+            {
+                lastmoney = lastmoney + money[i];
+            }
+
+
+            System.out.println(lastmoney);
+
+            System.out.println("현재 남은 손님의 숫자");
+
+            for (int i = 0; i <= human - 1; i++)
+            {
+                people = i;
+            }
+
+
+            System.out.println(people + 1);
+
+            System.out.println("처음 가지고 있던 금액 = " + firstmoney1);
+
+
+            money2 = firstmoney1 - lastmoney;
+
+            System.out.println("처음 가진 돈과 현재 가진 돈의 차액");
+            System.out.println(money2);
+            break;
+        }
+    }
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>6</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*문제.암호 해독
+
+치환 암호는 가장 간단한 형태의 암호로, 각 글자를 정해진 규칙에 따라서 치환하는 형태로 구성된 암호이다.
+
+
+
+다음과 같은 변화표가 주어져 있다고 하자.
+
+
+
+원문 a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+암호 k l s t c m u d n v e w x f y o g z h a p b i q j r
+
+입력 후에 알파벳 글자 수에 따라 암호 안에 들어있는 알파벳을 활용해서
+단어를 완성 하기
+
+
+
+* 테스트		입력		출력
+
+			dcwwy		hello
+
+			hcszca		secret
+
+			acha		test
+
+			xjdyxc		myhome
+
+			azkvcw		travel
+*/
+char input[100]; //입력받는 문자열저장
+
+char output[30] = "abcdefghijklmnopqrstuvwxyz"; //원문저장
+
+char code[30] = "klstcmudnvewxfyogzhapbiqjr"; //암호저장
+
+int i = 0, j; //반복문
+
+printf("암호 입력 : ");
+scanf("%s", input); //문자열을 입력받는다.
+
+
+
+while (input[i] != '\0') //입력받은 문자열이 끝날 때까지 반복문을 돌린다.
+{
+
+	for (j = 0; j < 30; j++) //문자 중 암호와 일치하는 것이 있는지 검토한다.
+	{
+
+		if (input[i] == code[j]) //암호와 일치할 경우,
+		{
+
+			input[i] = output[j]; //원문으로 해독해준다.
+
+			break; //해당 문자의 해독이 끝났으므로 for문을 나간다.
+
+		}
+
+	}
+
+	i++;
+
+}
+
+printf("해독 된 암호 : %s\n", input);
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>7</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+/*문제.디비디비딥
+
+디비디비딥은 두 명이 할 수 있는 게임이다.한 쪽은 '디비'와 '딥'을 이어서 만든 문자열을 이야기하면, 반대쪽은 '디비'는 '딥'으로, '딥'은 '디비'로 바꾸어 말해야 한다.
+
+
+
+'디비'를 D로, '딥'을 B로 포현하면, '디비디비딥'은 문자열로 DDB로 표현되며, 이에 대한 답은 '딥딥디비'이므로 'BBD'여야 한다.
+
+
+
+상대방의 질의에 대해서 디비디비딥 규칙을 따라 내야 하는 답을 출력하는 프로그램을 작성하시오.
+
+
+
+
+
+* 테스트		입력		출력
+
+			DBBDDB	BDDBBD
+
+			DB		BD
+
+			BBBBDD	DDDDBB
+
+			DDB		BDD
+
+			BDDB	DBBD*/
+
+// 서로 반대되는 답이 나와야함
+// D가 입력 되면 B가 나오고 B가 입력되면 D가 나옴
+// D면 B로 바꾸고 B면 D로 바꾸고 
+// 새 배열에 하나씩 더해서 입력하고 기존 배열에 다시 대입 후에 출력 
+// 문자형 관련해서 생각해야함
+// 입력 후에 D는 B B는 D
+
+char input[100] = " ";
+// 문자 변수 값을 " " null로 굳이 안비워도 되지만 비워두면 바이트 하나당 문자 한개씩 들어간다
+// 문자열로 입력을 하게 되면 char 변수는
+// 문자열을 입력해도 실제 안에 구성은 '문','자','열','입','력' 이런식으로 바이트 별로 나눠져 있고
+// 출력할때는 그걸 붙여서 출력하는 셈이다
+// 결국 문자열을 입력할때 인덱스 하나당 문자 하나씩 들어가있는셈이다
+
+
+while (1)
+{
+	printf("\n디비디비딥 입력 : ");
+	scanf("%s", &input);
+
+	for (int i = 0; i <= input[i]; i++)
+	{
+
+		if (input[i] == 'D')
+		{
+			input[i] = 'B';
+		}
+
+		else if (input[i] == 'B')
+		{
+			input[i] = 'D';
+		}
+	}
+
+	printf("\n디비디비딥 출력 : %s\n", input);
+}
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>8</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+    /*지금부터 게임을 시작합니다.
+
+	[0][0]에 숫자를 입력해주세요 : 1
+	[0][1]에 숫자를 입력해주세요 : 2
+	[0][2]에 숫자를 입력해주세요 : 3
+	[0][3]에 숫자를 입력해주세요 : 4
+	[1][0]에 숫자를 입력해주세요 : 1
+	[1][1]에 숫자를 입력해주세요 : 2
+	[1][2]에 숫자를 입력해주세요 : 3
+	[1][3]에 숫자를 입력해주세요 : 4
+	[2][0]에 숫자를 입력해주세요 : 1
+	[2][1]에 숫자를 입력해주세요 : 2
+	[2][2]에 숫자를 입력해주세요 : 3
+	[2][3]에 숫자를 입력해주세요 : 4
+	숫자가 저장되었습니다.답변자는 지금부터 문제에 대한 답변을 해주세요.
+
+
+
+	[0][0] : ? [0][1] : ? [0][2] : ? [0][3] : ?
+	[1][0] : ? [1][1] : ? [1][2] : ? [1][3] : ?
+	[2][0] : ? [2][1] : ? [2][2] : ? [2][3] : ?
+
+	답변을 맞추고 싶으시다면 열과 행을 입력해주세요.*/
+
+
+int score[3][4] = { 0, };
+int score1[3][4] = { 0, };
+int score2[3][4] = {0,};
+int rightanswer[3][4] = { 0, };
+int wronganswer[3][4] = { 0, };
+int sum = 0, num = 0, result = 0;
+int count = 0, count1 = 0, count2 = 0;
+int a, b, c, d;
+int select1, choice1;
+int select, choice, answer;
+
+
+
+printf("지금부터 게임을 시작 합니다\n\n");
+
+for (int i = 0; i <= 2; i++)
+{
+	for (int j = 0; j <= 3; j++)
+	{
+		printf("[%d][%d]에 숫자를 입력해주세요\n", i, j);
+		scanf("%d", &a);
+
+		score[i][j] = score[i][j] + a;
+	}
+}
+
+printf("숫자가 저장 되었습니다, 답변자는 지금부터 문제에 대한 답변을 해주세요\n\n");
+
+for (int i = 0; i <= 2; i++)
+{
+	for (int j = 0; j <= 3; j++)
+	{
+		printf("[%d][%d] : ?\t", i, j);
+	}
+	printf("\n");
+}
+
+
+
+while (1)
+{
+	printf("\n답변을 맞추고 싶으시다면 행과 열을 입력해주세요\n\n");
+
+	printf("행 입력 : \n");
+	scanf("%d", &select);
+
+	printf("열 입력 : \n");
+	scanf("%d", &choice);
+
+	printf("%d행과 %d열을 입력 하셨습니다\n", select, choice);
+	printf("5번 먼저 정답을 맞추시면 게임에서 승리합니다\n");
+	printf("정답은 무엇 입니까?\n");
+	scanf("%d", &answer);
+
+
+	if (score[select][choice] == answer)
+	{
+		score1[select][choice] = answer; 
+		score2[select][choice] = score2[select][choice] + answer;
+		rightanswer[select][choice] = answer;
+		for (int select = 0; select <= 2; select++)
+		{
+			for (int choice = 0; choice <= 3; choice++)
+			{
+				if (score[select][choice] != score1[select][choice])
+				{
+					printf("[%d][%d] : ?\t", select, choice);
+				}
+				
+				if (score[select][choice] == score1[select][choice])
+				{
+					printf("[%d][%d] : %d\t", select, choice, score1[select][choice]);
+				}
+				
+			}
+			printf("\n");
+		}
+		count1++;
+	}
+
+	if (count1 == 5)
+	{
+		printf("\n\n5개 정답을 맞추셔서 게임에서 승리 하셨습니다\n");
+
+		
+
+
+
+		for (int i = 0; i <= 2; i++)
+		{
+			for (int j = 0; j <= 3; j++)
+			{
+				sum = sum + rightanswer[i][j];
+			}
+		}
+		printf("정답의 총 합 : %d\n", sum);
+
+		return 0;
+	}
+
+	if (score[select][choice] != answer)
+	{
+		wronganswer[select][choice] = answer;
+		
+		count++;
+		num = answer;
+		if (count < 10)
+		{
+			printf("오답입니다\n");
+			
+			for (int select = 0; select <= 2; select++)
+			{
+				for (int choice = 0; choice <= 3; choice++)
+				{
+					if (score[select][choice] != score1[select][choice])
+					{
+						printf("[%d][%d] : ?\t", select, choice);
+					}
+
+					if (score[select][choice] == score1[select][choice])
+					{
+						printf("[%d][%d] : %d\t", select, choice, score1[select][choice]);
+					}
+
+				}
+				printf("\n");
+			}
+
+			printf("\n%d번째 기회 입니다 10번째 기회가 넘어가면 프로그램이 종료됩니다\n", count);
+		}
+
+		if (count == 10)
+		{
+			printf("%d번째 오답입력으로 인해 프로그램을 종료합니다\n", count);
+			for (int i = 0; i <= 2; i++)
+			{
+				for (int j = 0; j <= 3; j++)
+				{
+					sum = sum + wronganswer[i][j];
+				}
+			}
+			printf("오답의 총 합 : %d\n\n", sum);
+			printf("정답판 입니다\n");
+			for (int i = 0; i <= 2; i++)
+			{
+				for (int j = 0; j <= 3; j++)
+				{
+					printf("[%d][%d]에 들어간 숫자 : %d\t", i, j, score[i][j]);
+				}
+				printf("\n");
+			}
+
+			return 0;
+		}
+		
+	}
+}
+        </pre>
+    </div>
+
+    <div class="menuline">
+        <b>9</b>
+    </div>
+
+    <div class="jdbclist">
+        <pre>
+    /*경수와 민호는 본인이 만들고자 하는 게임 캐릭터가 있습니다.
+
+    전사 클래스,
+    격투가 클래스,
+    창술가 클래스,
+
+    정령사 클래스,
+    힐러 클래스,
+    마법사 클래스,
+    궁수 클래스,
+
+    마검사 클래스,
+    마창사 클래스,
+    가 있습니다.
+    하지만 이 게임은 다른 게임들과는 조금 다른데요.
+
+    능력치는
+    힘, 지능, HP, MP, 민첩, 운, 스피드, 검술, 궁술, 마검술, 마창술, 마법, 힐, 정령이 존재합니다.
+    그렇다고 해서 전사가 궁술을 찍지 못할 건 아니에요. 하지만 효율이 2/1이 됩니다.
+
+    캐릭터마다 받아야 하는 능력치는 5가지입니다.
+    하지만 제한사항이 있는데요.
+
+    전사는 힘이 무조건 있어야합니다. 그러니까, 전사에게 있어 힘은 필수적이기 때문에
+    따로 선택하지 않아도 힘은 포함이 되어있어요.
+    그러니까 총 예시)5개 선택 + 필수 능력치가 존재하는 거죠?
+
+    필수 능력치는 아래와 같아요.
+    전사, 격투가, 창술가 > 4개 선택 > 힘, 민첩[2개]
+    마법사, 궁수, 힐러, 정령사 > 5개 선택 > 지식[1개]
+    마검사, 마창사 > 3개 선택 > 지식, MP, 스피드
+
+    중요한 건 게임 캐릭터를 만들 때 회원가입 > 아이디, 비밀번호, 캐릭터이름, 능력치 등>
+    이 존재하고, 로그인시에는 캐릭터의 정보가 나타나야 합니다.
+    기본적으로 모든 능력치는 1point로 칩니다. 하지만 검술, 마검술, 마창술, 마법, 힐, 정령
+    같은 특수 계열은 같은 계열이 아니면 2/1point로 반환되니 참고하세요.
+    캐릭터가 나타날 때는
+    캐릭터
+    이름
+    능력치
+    포인트
+    가 나타나야합니다.*/
+
+    // 직업
+
+    String Warrior = "전사";
+    String Combat = "격투가";
+    String Spearman = "창술가";
+    String Spirit = "정령사";
+    String Healer = "힐러";
+    String Magicion = "마법사";
+    String Bow = "궁수";
+    String Magicsword = "마검사";
+    String Magicspear = "마창사";
+
+    // 능력치
+
+
+    // 힘
+    float power = 0;
+    String Power = "힘";
+    // 지능
+    float intelligence = 0;
+    String Intelligence = "지능";
+    // 체력
+    float hp = 0;
+    String HP = "체력";
+    // 마력
+    float mp = 0;
+    String MP = "마력";
+    // 민첩
+    float agility = 0;
+    String Agillity = "민첩";
+    // 운
+    float lucky = 0;
+    String Lucky = "운";
+    // 스피드
+    float speed = 0;
+    String Speed = "스피드";
+    // 검술
+    float swordskill = 0;
+    String Swordskill = "검술";
+    // 궁술
+    float bowskill = 0;
+    String Bowskill = "궁술";
+    // 마검술
+    float magicswordskill = 0;
+    String Magicswordskill = "마검술";
+    // 마창술
+    float magicspearskill = 0;
+    String Magicspearskill = "마창술";
+    // 마법
+    float magic = 0;
+    String Magic = "마법";
+    // 힐
+    float heal = 0;
+    String Heal = "힐";
+    // 정령
+    float spirit = 0;
+    String Spirit1 = "정령";
+
+    // 능력치 입력 변수
+
+    // 전사
+
+    float warvalue1 = 0;
+    float warvalue2 = 0;
+    float warvalue3 = 0;
+    float warvalue4 = 0;
+    float warvalue5 = 0;
+    float warvalue6 = 0;
+    float warvalue7 = 0;
+    float warvalue8 = 0;
+    float warvalue9 = 0;
+    float warvalue10 = 0;
+    float warvalue11 = 0;
+    float warvalue12 = 0;
+    float warvalue13 = 0;
+    float warvalue14 = 0;
+
+    // 격투가
+
+    float comvalue1 = 0;
+    float comvalue2 = 0;
+    float comvalue3 = 0;
+    float comvalue4 = 0;
+    float comvalue5 = 0;
+    float comvalue6 = 0;
+    float comvalue7 = 0;
+    float comvalue8 = 0;
+    float comvalue9 = 0;
+    float comvalue10 = 0;
+    float comvalue11 = 0;
+    float comvalue12 = 0;
+    float comvalue13 = 0;
+    float comvalue14 = 0;
+
+    // 창술가
+
+    float spevalue1 = 0;
+    float spevalue2 = 0;
+    float spevalue3 = 0;
+    float spevalue4 = 0;
+    float spevalue5 = 0;
+    float spevalue6 = 0;
+    float spevalue7 = 0;
+    float spevalue8 = 0;
+    float spevalue9 = 0;
+    float spevalue10 = 0;
+    float spevalue11 = 0;
+    float spevalue12 = 0;
+    float spevalue13 = 0;
+    float spevalue14 = 0;
+
+    // 정령사
+
+    float spivalue1 = 0;
+    float spivalue2 = 0;
+    float spivalue3 = 0;
+    float spivalue4 = 0;
+    float spivalue5 = 0;
+    float spivalue6 = 0;
+    float spivalue7 = 0;
+    float spivalue8 = 0;
+    float spivalue9 = 0;
+    float spivalue10 = 0;
+    float spivalue11 = 0;
+    float spivalue12 = 0;
+    float spivalue13 = 0;
+    float spivalue14 = 0;
+
+    // 힐러
+
+    float healvalue1 = 0;
+    float healvalue2 = 0;
+    float healvalue3 = 0;
+    float healvalue4 = 0;
+    float healvalue5 = 0;
+    float healvalue6 = 0;
+    float healvalue7 = 0;
+    float healvalue8 = 0;
+    float healvalue9 = 0;
+    float healvalue10 = 0;
+    float healvalue11 = 0;
+    float healvalue12 = 0;
+    float healvalue13 = 0;
+    float healvalue14 = 0;
+
+    // 마법사
+
+    float magvalue1 = 0;
+    float magvalue2 = 0;
+    float magvalue3 = 0;
+    float magvalue4 = 0;
+    float magvalue5 = 0;
+    float magvalue6 = 0;
+    float magvalue7 = 0;
+    float magvalue8 = 0;
+    float magvalue9 = 0;
+    float magvalue10 = 0;
+    float magvalue11 = 0;
+    float magvalue12 = 0;
+    float magvalue13 = 0;
+    float magvalue14 = 0;
+
+    // 궁수
+
+    float bowvalue1 = 0;
+    float bowvalue2 = 0;
+    float bowvalue3 = 0;
+    float bowvalue4 = 0;
+    float bowvalue5 = 0;
+    float bowvalue6 = 0;
+    float bowvalue7 = 0;
+    float bowvalue8 = 0;
+    float bowvalue9 = 0;
+    float bowvalue10 = 0;
+    float bowvalue11 = 0;
+    float bowvalue12 = 0;
+    float bowvalue13 = 0;
+    float bowvalue14 = 0;
+
+    // 마검사
+
+    float magswvalue1 = 0;
+    float magswvalue2 = 0;
+    float magswvalue3 = 0;
+    float magswvalue4 = 0;
+    float magswvalue5 = 0;
+    float magswvalue6 = 0;
+    float magswvalue7 = 0;
+    float magswvalue8 = 0;
+    float magswvalue9 = 0;
+    float magswvalue10 = 0;
+    float magswvalue11 = 0;
+    float magswvalue12 = 0;
+    float magswvalue13 = 0;
+    float magswvalue14 = 0;
+
+    // 마창사
+
+    float magspvalue1 = 0;
+    float magspvalue2 = 0;
+    float magspvalue3 = 0;
+    float magspvalue4 = 0;
+    float magspvalue5 = 0;
+    float magspvalue6 = 0;
+    float magspvalue7 = 0;
+    float magspvalue8 = 0;
+    float magspvalue9 = 0;
+    float magspvalue10 = 0;
+    float magspvalue11 = 0;
+    float magspvalue12 = 0;
+    float magspvalue13 = 0;
+    float magspvalue14 = 0;
+
+
+
+    // 회원가입 변수
+
+    String joinID;
+    String joinpass;
+    String ID;
+    String pass;
+    int charname;
+    int ability;
+
+    // 회원가입 정보 입력 변수
+    String Joininfo;
+
+    // 캐릭터 선택 변수
+
+    int select;
+    int stat;
+
+    String Class;
+    int value;
+
+    int count = 0;
+
+    // 회원가입 부터 하고 로그인 후 키울 캐릭 선택
+    // 그리고 올릴 스탯 선택
+    // 전부 다 while로 묶고 종료버튼 누르면 총 결과 출력
+
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("회원가입을 먼저 합니다");
+    System.out.println("ID 비밀번호를 입력해주세요");
+    System.out.println("ID 입력");
+    joinID = input.nextLine();
+    System.out.println("비밀번호 입력");
+    joinpass = input.nextLine();
+
+    System.out.println("회원가입 완료 !");
+    System.out.println();
+
+    System.out.println("로그인");
+    System.out.println("ID 입력");
+    ID = input.nextLine();
+    System.out.println("비밀번호 입력");
+    pass = input.nextLine();
+
+    // 로그인 실패 했을 경우도 코딩
+
+
+
+    if (ID.equals(joinID) == false || pass.equals(joinpass) == false)
+    {
+        System.out.println("로그인 정보가 다릅니다");
+        System.out.println("로그인");
+        System.out.println("ID 입력");
+        ID = input.nextLine();
+        System.out.println("비밀번호 입력");
+        pass = input.nextLine();
+    }
+    System.out.println();
+
+    if (ID.equals(joinID) && pass.equals(joinpass))
+    {
+        System.out.println("로그인 성공!");
+        while (true)
+        {
+            System.out.println("캐릭터를 선택하세요");
+            System.out.println("1. " + Warrior + " 2. " + Combat + " 3. " + Spearman + " 4. " + Spirit + " 5. " + Healer + " 6. " + Magicion + " 7. " + Bow + " 8. " + Magicsword + " 9. " + Magicspear);
+            select = input.nextInt();
+
+            if (select == 1)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame warrior1 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior2 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior3 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior4 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior5 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior6 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior7 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior8 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior9 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior10 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior11 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior12 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior13 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+                    RpgGame warrior14 = new RpgGame(warvalue1, warvalue2, warvalue3, warvalue4, warvalue5, warvalue6, warvalue7, warvalue8, warvalue9, warvalue10, warvalue11, warvalue12, warvalue13, warvalue14);
+
+
+                    System.out.println(Warrior + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power = 2;
+                        power = power + 1;
+                        System.out.println(Warrior + "는 이미 힘 스탯이 증가되어 있습니다");
+                        power = power - 1;
+                        warvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence++;
+                        System.out.println("지능이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        intelligence = intelligence / 2;
+                        warvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        warvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        mp = mp / 2;
+                        warvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility = 2;
+                        agility = agility + 1;
+                        System.out.println(Warrior + "는 이미 민첩 스탯이 증가되어 있습니다");
+                        agility = agility - 1;
+                        warvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        lucky = lucky / 2;
+                        warvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        warvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        warvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        warvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        warvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        warvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magic = magic / 2;
+                        warvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        warvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Warrior + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        warvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("전사 능력치");
+                        if (warvalue1 > 0)
+                        {
+                            warrior1.Warrior(Power, warvalue1);
+                        }
+
+                        if (warvalue2 > 0)
+                        {
+                            warrior2.Warrior(Intelligence, warvalue2);
+                        }
+
+                        if (warvalue3 > 0)
+                        {
+                            warrior3.Warrior(HP, warvalue3);
+                        }
+
+                        if (warvalue4 > 0)
+                        {
+                            warrior4.Warrior(MP, warvalue4);
+                        }
+
+                        if (warvalue5 > 0)
+                        {
+                            warrior5.Warrior(Agillity, warvalue5);
+                        }
+
+                        if (warvalue6 > 0)
+                        {
+                            warrior6.Warrior(Lucky, warvalue6);
+                        }
+
+                        if (warvalue7 > 0)
+                        {
+                            warrior7.Warrior(Speed, warvalue7);
+                        }
+
+                        if (warvalue8 > 0)
+                        {
+                            warrior8.Warrior(Swordskill, warvalue8);
+                        }
+
+                        if (warvalue9 > 0)
+                        {
+                            warrior9.Warrior(Bowskill, warvalue9);
+                        }
+
+                        if (warvalue10 > 0)
+                        {
+                            warrior10.Warrior(Magicswordskill, warvalue10);
+                        }
+
+                        if (warvalue11 > 0)
+                        {
+                            warrior11.Warrior(Magicspearskill, warvalue11);
+                        }
+
+                        if (warvalue12 > 0)
+                        {
+                            warrior12.Warrior(Magic, warvalue12);
+                        }
+
+                        if (warvalue13 > 0)
+                        {
+                            warrior13.Warrior(Heal, warvalue13);
+                        }
+
+                        if (warvalue14 > 0)
+                        {
+                            warrior14.Warrior(Spirit1, warvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+                        break;
+
+                    }
+                }
+            }
+
+            if (select == 2)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame combat1 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat2 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat3 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat4 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat5 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat6 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat7 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat8 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat9 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat10 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat11 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat12 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat13 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+                    RpgGame combat14 = new RpgGame(comvalue1, comvalue2, comvalue3, comvalue4, comvalue5, comvalue6, comvalue7, comvalue8, comvalue9, comvalue10, comvalue11, comvalue12, comvalue13, comvalue14);
+
+
+                    System.out.println(Combat + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power = 2;
+                        power = power + 1;
+                        System.out.println(Combat + "는 이미 힘 스탯이 증가되어 있습니다");
+                        power = power - 1;
+                        comvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence++;
+                        System.out.println("지능이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        intelligence = intelligence / 2;
+                        comvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        comvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이  + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        mp = mp / 2;
+                        comvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility = 2;
+                        agility++;
+                        System.out.println(Combat + "는 이미 민첩 스탯이 증가되어 있습니다");
+                        agility = agility - 1;
+                        comvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이  + 1 증가했습니다");
+                        comvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가  + 1 증가했습니다");
+                        comvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        comvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        comvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        comvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        comvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magic = magic / 2;
+                        comvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        comvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Combat + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        comvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("격투가 능력치");
+                        if (comvalue1 > 0)
+                        {
+                            combat1.Combat(Power, comvalue1);
+                        }
+
+                        if (comvalue2 > 0)
+                        {
+                            combat2.Combat(Intelligence, comvalue1);
+                        }
+
+                        if (comvalue3 > 0)
+                        {
+                            combat3.Combat(HP, comvalue3);
+                        }
+
+                        if (comvalue4 > 0)
+                        {
+                            combat4.Combat(MP, comvalue4);
+                        }
+
+                        if (comvalue5 > 0)
+                        {
+                            combat5.Combat(Agillity, comvalue5);
+                        }
+
+                        if (comvalue6 > 0)
+                        {
+                            combat6.Combat(Lucky, comvalue6);
+                        }
+
+                        if (comvalue7 > 0)
+                        {
+                            combat7.Combat(Speed, comvalue7);
+                        }
+
+                        if (comvalue8 > 0)
+                        {
+                            combat8.Combat(Swordskill, comvalue8);
+                        }
+
+                        if (comvalue9 > 0)
+                        {
+                            combat9.Combat(Bowskill, comvalue9);
+                        }
+
+                        if (comvalue10 > 0)
+                        {
+                            combat10.Combat(Magicswordskill, comvalue10);
+                        }
+
+                        if (comvalue11 > 0)
+                        {
+                            combat11.Combat(Magicspearskill, comvalue11);
+                        }
+
+                        if (comvalue12 > 0)
+                        {
+                            combat12.Combat(Magic, comvalue12);
+                        }
+
+                        if (comvalue13 > 0)
+                        {
+                            combat13.Combat(Heal, comvalue13);
+                        }
+
+                        if (comvalue14 > 0)
+                        {
+                            combat14.Combat(Spirit1, comvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 3)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame spearman1 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman2 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman3 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman4 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman5 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman6 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman7 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman8 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman9 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman10 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman11 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman12 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman13 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+                    RpgGame spearman14 = new RpgGame(spevalue1, spevalue2, spevalue3, spevalue4, spevalue5, spevalue6, spevalue7, spevalue8, spevalue9, spevalue10, spevalue11, spevalue12, spevalue13, spevalue14);
+
+
+
+                    System.out.println(Spearman + "올릴 스탯 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power = 2;
+                        power = power + 1;
+                        System.out.println(Spearman + "는 이미 힘 스탯이 증가되어 있습니다");
+                        power = power - 1;
+                        spevalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence++;
+                        System.out.println("지능이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        intelligence = intelligence / 2;
+                        spevalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        spevalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        mp = mp / 2;
+                        spevalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        spevalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        spevalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        spevalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        spevalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        spevalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        spevalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        spevalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        spevalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        spevalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Spearman + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        spevalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("창술가 능력치");
+                        if (spevalue1 > 0)
+                        {
+                            spearman1.Spearman(Power, spevalue1);
+                        }
+
+                        if (spevalue2 > 0)
+                        {
+                            spearman2.Spearman(Intelligence, spevalue2);
+                        }
+
+                        if (spevalue3 > 0)
+                        {
+                            spearman3.Spearman(HP, spevalue3);
+                        }
+
+                        if (spevalue4 > 0)
+                        {
+                            spearman4.Spearman(MP, spevalue4);
+                        }
+
+                        if (spevalue5 > 0)
+                        {
+                            spearman5.Spearman(Agillity, spevalue5);
+                        }
+
+                        if (spevalue6 > 0)
+                        {
+                            spearman6.Spearman(Lucky, spevalue6);
+                        }
+
+                        if (spevalue7 > 0)
+                        {
+                            spearman7.Spearman(Speed, spevalue7);
+                        }
+
+                        if (spevalue8 > 0)
+                        {
+                            spearman8.Spearman(Swordskill, spevalue8);
+                        }
+
+                        if (spevalue9 > 0)
+                        {
+                            spearman9.Spearman(Bowskill, spevalue9);
+                        }
+
+                        if (spevalue10 > 0)
+                        {
+                            spearman10.Spearman(Magicswordskill, spevalue10);
+                        }
+
+                        if (spevalue11 > 0)
+                        {
+                            spearman11.Spearman(Magicspearskill, spevalue11);
+                        }
+
+                        if (spevalue12 > 0)
+                        {
+                            spearman12.Spearman(Magic, spevalue12);
+                        }
+
+                        if (spevalue13 > 0)
+                        {
+                            spearman13.Spearman(Heal, spevalue13);
+                        }
+
+                        if (spevalue14 > 0)
+                        {
+                            spearman14.Spearman(Spirit1, spevalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 4)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame spirit1 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit2 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit3 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit4 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit5 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit6 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit7 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit8 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit9 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit10 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit11 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit12 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit13 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+                    RpgGame spirit14 = new RpgGame(spivalue1, spivalue2, spivalue3, spivalue4, spivalue5, spivalue6, spivalue7, spivalue8, spivalue9, spivalue10, spivalue11, spivalue12, spivalue13, spivalue14);
+
+
+
+                    System.out.println(Spirit + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println(Spirit + "에게 맞지 않는 스탯입니다 효과가 2 / 1로 줄어듭니다");
+                        power = power / 2;
+                        spivalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence = 2;
+                        intelligence++;
+                        System.out.println(Spirit + "는 지능이 이미 증가되어 있습니다");
+                        intelligence = intelligence - 1;
+                        spivalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        spivalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        spivalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        agility = agility / 2;
+                        spivalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        spivalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        speed = speed / 2;
+                        spivalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        spivalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        spivalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        spivalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Spirit + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        spivalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        spivalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        spivalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit = 2;
+                        spirit++;
+                        System.out.println(Spirit + "는 정령술이 이미 증가되어 있습니다");
+                        spirit = spirit - 1;
+                        spivalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("정령사 능력치");
+                        if (spivalue1 > 0)
+                        {
+                            spirit1.Spirit(Power, spivalue1);
+                        }
+
+                        if (spivalue2 > 0)
+                        {
+                            spirit1.Spirit(Intelligence, spivalue2);
+                        }
+
+                        if (spivalue3 > 0)
+                        {
+                            spirit1.Spirit(HP, spivalue3);
+                        }
+
+                        if (spivalue4 > 0)
+                        {
+                            spirit1.Spirit(MP, spivalue4);
+                        }
+
+                        if (spivalue5 > 0)
+                        {
+                            spirit1.Spirit(Agillity, spivalue5);
+                        }
+
+                        if (spivalue6 > 0)
+                        {
+                            spirit1.Spirit(Lucky, spivalue6);
+                        }
+
+                        if (spivalue7 > 0)
+                        {
+                            spirit1.Spirit(Speed, spivalue7);
+                        }
+
+                        if (spivalue8 > 0)
+                        {
+                            spirit1.Spirit(Swordskill, spivalue8);
+                        }
+
+                        if (spivalue9 > 0)
+                        {
+                            spirit1.Spirit(Bowskill, spivalue9);
+                        }
+
+                        if (spivalue10 > 0)
+                        {
+                            spirit1.Spirit(Magicswordskill, spivalue10);
+                        }
+
+                        if (spivalue11 > 0)
+                        {
+                            spirit1.Spirit(Magicspearskill, spivalue11);
+                        }
+
+                        if (spivalue12 > 0)
+                        {
+                            spirit1.Spirit(Magic, spivalue12);
+                        }
+
+                        if (spivalue13 > 0)
+                        {
+                            spirit1.Spirit(Heal, spivalue13);
+                        }
+
+                        if (spivalue14 > 0)
+                        {
+                            spirit1.Spirit(Spirit1, spivalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 5)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame healer1 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer2 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer3 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer4 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer5 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer6 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer7 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer8 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer9 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer10 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer11 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer12 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer13 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+                    RpgGame healer14 = new RpgGame(healvalue1, healvalue2, healvalue3, healvalue4, healvalue5, healvalue6, healvalue7, healvalue8, healvalue9, healvalue10, healvalue11, healvalue12, healvalue13, healvalue14);
+
+
+
+                    System.out.println(Healer + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println("힘이 + 1 증가했습니다");
+                        System.out.println(Healer + "에게 맞지 않는 스탯입니다 효과가 2 / 1로 줄어듭니다");
+                        power = power / 2;
+                        healvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence++;
+                        System.out.println(Healer + "는 지능이 이미 증가되어 있습니다");
+                        intelligence = intelligence - 1;
+                        healvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        healvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        healvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        agility = agility / 2;
+                        healvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        healvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        speed = speed / 2;
+                        healvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        healvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        healvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        healvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        healvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        healvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        healvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Healer + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        healvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("정령사 능력치");
+                        if (healvalue1 > 0)
+                        {
+                            healer1.Healer(Power, healvalue1);
+                        }
+
+                        if (healvalue2 > 0)
+                        {
+                            healer2.Healer(Intelligence, healvalue2);
+                        }
+
+                        if (healvalue3 > 0)
+                        {
+                            healer1.Healer(HP, healvalue3);
+                        }
+
+                        if (healvalue4 > 0)
+                        {
+                            healer1.Healer(MP, healvalue4);
+                        }
+
+                        if (healvalue5 > 0)
+                        {
+                            healer1.Healer(Agillity, healvalue5);
+                        }
+
+                        if (healvalue6 > 0)
+                        {
+                            healer1.Healer(Lucky, healvalue6);
+                        }
+
+                        if (healvalue7 > 0)
+                        {
+                            healer1.Healer(Speed, healvalue7);
+                        }
+
+                        if (healvalue8 > 0)
+                        {
+                            healer1.Healer(Swordskill, healvalue8);
+                        }
+
+                        if (healvalue9 > 0)
+                        {
+                            healer1.Healer(Bowskill, healvalue9);
+                        }
+
+                        if (healvalue10 > 0)
+                        {
+                            healer1.Healer(Magicswordskill, healvalue10);
+                        }
+
+                        if (healvalue11 > 0)
+                        {
+                            healer1.Healer(Magicspearskill, healvalue11);
+                        }
+
+                        if (healvalue12 > 0)
+                        {
+                            healer1.Healer(Magic, healvalue12);
+                        }
+
+                        if (healvalue13 > 0)
+                        {
+                            healer1.Healer(Heal, healvalue13);
+                        }
+
+                        if (healvalue14 > 0)
+                        {
+                            healer1.Healer(Spirit1, healvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 6)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame magicion1 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion2 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion3 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion4 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion5 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion6 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion7 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion8 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion9 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion10 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion11 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion12 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion13 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+                    RpgGame magicion14 = new RpgGame(magvalue1, magvalue2, magvalue3, magvalue4, magvalue5, magvalue6, magvalue7, magvalue8, magvalue9, magvalue10, magvalue11, magvalue12, magvalue13, magvalue14);
+
+
+
+                    System.out.println(Magicion + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println("힘이 + 1 증가했습니다");
+                        System.out.println(Magicion + "에게 맞지 않는 스탯입니다 효과가 2 / 1로 줄어듭니다");
+                        power = power / 2;
+                        magvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence = 2;
+                        intelligence++;
+                        System.out.println(Magicion + "는 지능이 이미 증가되어 있습니다");
+                        intelligence = intelligence - 1;
+                        magvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        magvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        magvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        agility = agility / 2;
+                        magvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        magvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        speed = speed / 2;
+                        magvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        magvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        magvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        magvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        magvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        magvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        magvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Magicion + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        magvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("마법사 능력치");
+                        if (magvalue1 > 0)
+                        {
+                            magicion1.Magicion(Power, magvalue1);
+                        }
+
+                        if (magvalue2 > 0)
+                        {
+                            magicion2.Magicion(Intelligence, magvalue2);
+                        }
+
+                        if (magvalue3 > 0)
+                        {
+                            magicion3.Magicion(HP, magvalue3);
+                        }
+
+                        if (magvalue4 > 0)
+                        {
+                            magicion4.Magicion(MP, magvalue4);
+                        }
+
+                        if (magvalue5 > 0)
+                        {
+                            magicion5.Magicion(Agillity, magvalue5);
+                        }
+
+                        if (magvalue6 > 0)
+                        {
+                            magicion6.Magicion(Lucky, magvalue6);
+                        }
+
+                        if (magvalue7 > 0)
+                        {
+                            magicion7.Magicion(Speed, magvalue7);
+                        }
+
+                        if (magvalue8 > 0)
+                        {
+                            magicion8.Magicion(Swordskill, magvalue8);
+                        }
+
+                        if (magvalue9 > 0)
+                        {
+                            magicion9.Magicion(Bowskill, magvalue9);
+                        }
+
+                        if (magvalue10 > 0)
+                        {
+                            magicion10.Magicion(Magicswordskill, magvalue10);
+                        }
+
+                        if (magvalue11 > 0)
+                        {
+                            magicion11.Magicion(Magicspearskill, magvalue11);
+                        }
+
+                        if (magvalue12 > 0)
+                        {
+                            magicion12.Magicion(Magic, magvalue12);
+                        }
+
+                        if (magvalue13 > 0)
+                        {
+                            magicion13.Magicion(Heal, magvalue13);
+                        }
+
+                        if (magvalue14 > 0)
+                        {
+                            magicion14.Magicion(Spirit1, magvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 7)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame bow1 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow2 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow3 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow4 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow5 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow6 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow7 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow8 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow9 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow10 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow11 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow12 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow13 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+                    RpgGame bow14 = new RpgGame(bowvalue1, bowvalue2, bowvalue3, bowvalue4, bowvalue5, bowvalue6, bowvalue7, bowvalue8, bowvalue9, bowvalue10, bowvalue11, bowvalue12, bowvalue13, bowvalue14);
+
+
+
+                    System.out.println(Bow + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        power = power / 2;
+                        bowvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence = 2;
+                        intelligence++;
+                        System.out.println("지능이 + 1 증가했습니다");
+                        System.out.println(Bow + "는 지능이 이미 올라가 있습니다");
+                        intelligence = intelligence - 1;
+                        bowvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        bowvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        mp = mp / 2;
+                        bowvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        bowvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        bowvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        bowvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        bowvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println("궁술이 + 1 증가했습니다");
+                        bowvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        bowvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        bowvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magic = magic / 2;
+                        bowvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        heal = heal / 2;
+                        bowvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println("정령술이 + 1 증가했습니다");
+                        System.out.println(Bow + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        bowvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("마법사 능력치");
+                        if (bowvalue1 > 0)
+                        {
+                            bow1.Bow(Power, bowvalue1);
+                        }
+
+                        if (bowvalue2 > 0)
+                        {
+                            bow2.Bow(Intelligence, bowvalue2);
+                        }
+
+                        if (bowvalue3 > 0)
+                        {
+                            bow3.Bow(HP, bowvalue3);
+                        }
+
+                        if (bowvalue4 > 0)
+                        {
+                            bow4.Bow(MP, bowvalue4);
+                        }
+
+                        if (bowvalue5 > 0)
+                        {
+                            bow5.Bow(Agillity, bowvalue5);
+                        }
+
+                        if (bowvalue6 > 0)
+                        {
+                            bow6.Bow(Lucky, bowvalue6);
+                        }
+
+                        if (bowvalue7 > 0)
+                        {
+                            bow7.Bow(Speed, bowvalue7);
+                        }
+
+                        if (bowvalue8 > 0)
+                        {
+                            bow8.Bow(Swordskill, bowvalue8);
+                        }
+
+                        if (bowvalue9 > 0)
+                        {
+                            bow9.Bow(Bowskill, bowvalue9);
+                        }
+
+                        if (bowvalue10 > 0)
+                        {
+                            bow10.Bow(Magicswordskill, bowvalue10);
+                        }
+
+                        if (bowvalue11 > 0)
+                        {
+                            bow11.Bow(Magicspearskill, bowvalue11);
+                        }
+
+                        if (bowvalue12 > 0)
+                        {
+                            bow12.Bow(Magic, bowvalue12);
+                        }
+
+                        if (bowvalue13 > 0)
+                        {
+                            bow13.Bow(Heal, bowvalue13);
+                        }
+
+                        if (bowvalue14 > 0)
+                        {
+                            bow14.Bow(Spirit1, bowvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 8)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame magsw1 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw2 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw3 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw4 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw5 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw6 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw7 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw8 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw9 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw10 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw11 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw12 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw13 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+                    RpgGame magsw14 = new RpgGame(magswvalue1, magswvalue2, magswvalue3, magswvalue4, magswvalue5, magswvalue6, magswvalue7, magswvalue8, magswvalue9, magswvalue10, magswvalue11, magswvalue12, magswvalue13, magswvalue14);
+
+
+
+                    System.out.println(Magicsword + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println("힘이 + 1 증가했습니다");
+                        magswvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence = 2;
+                        intelligence++;
+                        System.out.println(Magicsword + "는 지능이 이미 증가되어 있습니다");
+                        intelligence = intelligence - 1;
+                        magswvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        magswvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp = 2;
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        System.out.println(Magicsword + "는 마력이 이미 증가되어 있습니다");
+                        mp = mp - 1;
+                        magswvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        System.out.println(Magicsword + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        agility = agility / 2;
+                        magswvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        magswvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed = 2;
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        System.out.println(Magicsword + "는 스피드가 이미 증가되어 있습니다");
+                        speed = speed - 1;
+                        magswvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        magswvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println(Magicsword + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        bowskill = bowskill / 2;
+                        magswvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        magswvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        System.out.println(Magicsword + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        magswvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        magswvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        System.out.println(Magicsword + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        heal = heal / 2;
+                        magswvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println(Magicsword + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit - 1;
+                        magswvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("마검사 능력치");
+                        if (magswvalue1 > 0)
+                        {
+                            magsw1.Magicsword(Power, magswvalue1);
+                        }
+
+                        if (magswvalue2 > 0)
+                        {
+                            magsw2.Magicsword(Intelligence, magswvalue2);
+                        }
+
+                        if (magswvalue3 > 0)
+                        {
+                            magsw3.Magicsword(HP, magswvalue3);
+                        }
+
+                        if (magswvalue4 > 0)
+                        {
+                            magsw4.Magicsword(MP, magswvalue4);
+                        }
+
+                        if (magswvalue5 > 0)
+                        {
+                            magsw5.Magicsword(Agillity, magswvalue5);
+                        }
+
+                        if (magswvalue6 > 0)
+                        {
+                            magsw6.Magicsword(Lucky, magswvalue6);
+                        }
+
+                        if (magswvalue7 > 0)
+                        {
+                            magsw7.Magicsword(Speed, magswvalue7);
+                        }
+
+                        if (magswvalue8 > 0)
+                        {
+                            magsw8.Magicsword(Swordskill, magswvalue8);
+                        }
+
+                        if (magswvalue9 > 0)
+                        {
+                            magsw9.Magicsword(Bowskill, magswvalue9);
+                        }
+
+                        if (magswvalue10 > 0)
+                        {
+                            magsw10.Magicsword(Magicswordskill, magswvalue10);
+                        }
+
+                        if (magswvalue11 > 0)
+                        {
+                            magsw11.Magicsword(Magicspearskill, magswvalue11);
+                        }
+
+                        if (magswvalue12 > 0)
+                        {
+                            magsw12.Magicsword(Magic, magswvalue12);
+                        }
+
+                        if (magswvalue13 > 0)
+                        {
+                            magsw13.Magicsword(Heal, magswvalue13);
+                        }
+
+                        if (magswvalue14 > 0)
+                        {
+                            magsw14.Magicsword(Spirit1, magswvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+
+            if (select == 9)
+            {
+                while (true)
+                {
+                    count++;
+                    RpgGame magsp1 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp2 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp3 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp4 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp5 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp6 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp7 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp8 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp9 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp10 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp11 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp12 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp13 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+                    RpgGame magsp14 = new RpgGame(magspvalue1, magspvalue2, magspvalue3, magspvalue4, magspvalue5, magspvalue6, magspvalue7, magspvalue8, magspvalue9, magspvalue10, magspvalue11, magspvalue12, magspvalue13, magspvalue14);
+
+
+
+                    System.out.println(Magicspear + "올릴 스텟 선택");
+                    System.out.println("1. 힘, 2. 지능, 3. 체력, 4. 마력, 5. 민첩, 6. 운, 7. 스피드, 8. 검술, 9. 궁술, 10. 마검술, 11. 마창술, 12. 마법, 13. 힐, 14. 정령, 15. 메뉴로돌아가기");
+
+                    stat = input.nextInt();
+
+                    if (stat == 1 && count < 6)
+                    {
+                        power++;
+                        System.out.println("힘이 + 1 증가했습니다");
+                        magspvalue1 = power;
+                        System.out.println();
+                    }
+
+                    if (stat == 1 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count < 6)
+                    {
+                        intelligence = 2;
+                        intelligence++;
+                        System.out.println(Magicspear + "는 지능이 이미 증가되어 있습니다");
+                        intelligence = intelligence - 1;
+                        magspvalue2 = intelligence;
+                        System.out.println();
+                    }
+
+                    if (stat == 2 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count < 6)
+                    {
+                        hp++;
+                        System.out.println("체력이 + 1 증가했습니다");
+                        magspvalue3 = hp;
+                        System.out.println();
+                    }
+
+                    if (stat == 3 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count < 6)
+                    {
+                        mp = 2;
+                        mp++;
+                        System.out.println("마력이 + 1 증가했습니다");
+                        System.out.println(Magicspear + "는 마력이 이미 증가되어 있습니다");
+                        mp--;
+                        magspvalue4 = mp;
+                        System.out.println();
+                    }
+
+                    if (stat == 4 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count < 6)
+                    {
+                        agility++;
+                        System.out.println("민첩이 + 1 증가했습니다");
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        agility = agility / 2;
+                        magspvalue5 = agility;
+                        System.out.println();
+                    }
+
+                    if (stat == 5 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count < 6)
+                    {
+                        lucky++;
+                        System.out.println("운이 + 1 증가했습니다");
+                        magspvalue6 = lucky;
+                        System.out.println();
+                    }
+
+                    if (stat == 6 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count < 6)
+                    {
+                        speed++;
+                        System.out.println("스피드가 + 1 증가했습니다");
+                        magspvalue7 = speed;
+                        System.out.println();
+                    }
+
+                    if (stat == 7 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count < 6)
+                    {
+                        swordskill++;
+                        System.out.println("검술이 + 1 증가했습니다");
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        swordskill = swordskill / 2;
+                        magspvalue8 = swordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 8 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count < 6)
+                    {
+                        bowskill++;
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicspearskill = magicspearskill / 2;
+                        magspvalue9 = bowskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 9 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count < 6)
+                    {
+                        magicswordskill++;
+                        System.out.println("마검술이 + 1 증가했습니다");
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        magicswordskill = magicswordskill / 2;
+                        magspvalue10 = magicswordskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 10 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count < 6)
+                    {
+                        magicspearskill++;
+                        System.out.println("마창술이 + 1 증가했습니다");
+                        magspvalue11 = magicspearskill;
+                        System.out.println();
+                    }
+
+                    if (stat == 11 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count < 6)
+                    {
+                        magic++;
+                        System.out.println("마법이 + 1 증가했습니다");
+                        magspvalue12 = magic;
+                        System.out.println();
+                    }
+
+                    if (stat == 12 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count < 6)
+                    {
+                        heal++;
+                        System.out.println("힐이 + 1 증가했습니다");
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        heal = heal / 2;
+                        magspvalue13 = heal;
+                        System.out.println();
+                    }
+
+                    if (stat == 13 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count < 6)
+                    {
+                        spirit++;
+                        System.out.println(Magicspear + "전용 스탯이 아닙니다 스탯이 2 / 1로 줄어듭니다");
+                        spirit = spirit / 2;
+                        magspvalue14 = spirit;
+                        System.out.println();
+                    }
+
+                    if (stat == 14 && count > 6)
+                    {
+                        System.out.println();
+                        System.out.println("이미 모든 스탯을 찍었습니다 다른 캐릭터를 선택 해주세요");
+                        System.out.println();
+                    }
+
+                    if (count == 6)
+                    {
+                        System.out.println();
+                        System.out.println("캐릭터 당 6개의 스텟을 찍을 수 있습니다 종료하고 다른 캐릭터를 선택해주세요");
+                        System.out.println();
+                    }
+
+                    if (stat == 15)
+                    {
+                        System.out.println();
+                        System.out.println("마창사 능력치");
+                        if (magspvalue1 > 0)
+                        {
+                            magsp1.Magicspear(Power, magspvalue1);
+                        }
+
+                        if (magspvalue2 > 0)
+                        {
+                            magsp2.Magicspear(Intelligence, magspvalue2);
+                        }
+
+                        if (magspvalue3 > 0)
+                        {
+                            magsp3.Magicspear(HP, magspvalue3);
+                        }
+
+                        if (magspvalue4 > 0)
+                        {
+                            magsp4.Magicspear(MP, magspvalue4);
+                        }
+
+                        if (magspvalue5 > 0)
+                        {
+                            magsp5.Magicspear(Agillity, magspvalue5);
+                        }
+
+                        if (magspvalue6 > 0)
+                        {
+                            magsp6.Magicspear(Lucky, magspvalue6);
+                        }
+
+                        if (magspvalue7 > 0)
+                        {
+                            magsp7.Magicspear(Speed, magspvalue7);
+                        }
+
+                        if (magspvalue8 > 0)
+                        {
+                            magsp8.Magicspear(Swordskill, magspvalue8);
+                        }
+
+                        if (magspvalue9 > 0)
+                        {
+                            magsp9.Magicspear(Bowskill, magspvalue9);
+                        }
+
+                        if (magspvalue10 > 0)
+                        {
+                            magsp10.Magicspear(Magicswordskill, magspvalue10);
+                        }
+
+                        if (magspvalue11 > 0)
+                        {
+                            magsp11.Magicspear(Magicspearskill, magspvalue11);
+                        }
+
+                        if (magspvalue12 > 0)
+                        {
+                            magsp12.Magicspear(Magic, magspvalue12);
+                        }
+
+                        if (magspvalue13 > 0)
+                        {
+                            magsp13.Magicspear(Heal, magspvalue13);
+                        }
+
+                        if (magspvalue14 > 0)
+                        {
+                            magsp14.Magicspear(Spirit1, magspvalue14);
+                        }
+                        System.out.println();
+
+                        power = 0;
+                        intelligence = 0;
+                        hp = 0;
+                        mp = 0;
+                        agility = 0;
+                        lucky = 0;
+                        speed = 0;
+                        swordskill = 0;
+                        bowskill = 0;
+                        magicswordskill = 0;
+                        magicspearskill = 0;
+                        magic = 0;
+                        heal = 0;
+                        spirit = 0;
+                        count = 0;
+
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    ========================== 객체와 클래스 ====================
+    
+    String Warrior;
+String Combat;
+String Spearman;
+String Spirit;
+String Healer;
+String Magicion;
+String Bow;
+String Magicsword;
+String Magicspear;
+
+// 능력치
+
+
+// 힘
+float power;
+// 지능
+float intelligence;
+// 체력
+float hp;
+// 마력
+float mp;
+// 민첩
+float agility;
+// 운
+float lucky;
+// 스피드
+float speed;
+// 검술
+float swordskill;
+// 궁술
+float bowskill;
+// 마검술
+float magicswordskill;
+// 마창술
+float magicspearskill;
+// 마법
+float magic;
+// 힐
+float heal;
+// 정령
+float spirit;
+
+// 회원가입 변수
+
+int ID;
+int pass;
+int charname;
+int ability;
+
+// 능력치 입력 변수
+
+float value1;
+float value2;
+float value3;
+float value4;
+float value5;
+float value6;
+float value7 = 0;
+float value8 = 0;
+float value9 = 0;
+float value10 = 0;
+float value11 = 0;
+float value12 = 0;
+float value13 = 0;
+float value14 = 0;
+
+int count;
+
+String Class;
+float value;
+
+
+
+RpgGame(float value1, float value2, float value3, float value4, float value5, float value6, float value7, float value8,
+        float value9, float value10, float value11, float value12, float value13, float value14)
+{
+    this.value1 = value1;
+    this.value2 = value2;
+    this.value3 = value3;
+    this.value4 = value4;
+    this.value5 = value5;
+    this.value6 = value6;
+    this.value7 = value7;
+    this.value8 = value8;
+    this.value9 = value9;
+    this.value10 = value10;
+    this.value11 = value11;
+    this.value12 = value12;
+    this.value13 = value13;
+    this.value14 = value14;
+}
+
+RpgGame(String Class, float value)
+{
+    this.Class = Class;
+    this.value = value;
+}
+
+public void Warrior(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Combat(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+
+}
+
+public void Spearman(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Spirit(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+
+}
+
+public void Healer(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Magicion(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Bow(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Magicsword(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+
+public void Magicspear(String Class, float value)
+{
+    System.out.println(Class + " = " + value);
+}
+        </pre>
+    </div>
+
+    
+</body>
+</html>
